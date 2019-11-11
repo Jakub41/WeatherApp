@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+  background: rgb(218, 232, 69); /* Old browsers */
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgb(218, 232, 69) 0%,
+    rgb(255, 146, 10) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgb(218, 232, 69) 0%,
+    rgb(255, 146, 10) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(
+    ellipse at center,
+    rgb(218, 232, 69) 0%,
+    rgb(255, 146, 10) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.location {
+    height: 30vh;
+    width: 50%;
+    
+}
+
