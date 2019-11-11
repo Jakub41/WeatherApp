@@ -16,6 +16,10 @@ window.onload = () => {
   // Coordinates variables
   let long;
   let lat;
+  // Weather info variables
+  let temperatureDescription = document.querySelector(".temp-description");
+  let temperatureDegree = document.querySelector(".temp-degree");
+  let locationTimezone = document.querySelector(".t-zone");
 
   // We check if geolocation exist on browser with a JS method
   // @link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
@@ -29,24 +33,54 @@ window.onload = () => {
       const proxy = `https://cors-anywhere.herokuapp.com/`;
       // API -> we pass as @params 1st lat 2sd long
       const api = `${proxy}https://api.darksky.net/forecast/6ff3bc141da2e9d546565b4cf31812c6/${lat},${long}`;
-      
+
       // Calling the async function
       // We need to fetch the data from API
       // We use async function passing our API
-      const getData = async () => {
-          // We fetch and await the response
-          const response = await fetch(api);
-          // We wait the results in a JSON OBJ
-          const data = await response.json();
-          // Short hand to get the data -> temperature & summary
-          const {temperature, summary} = data.currently;
-
-
-      }   
+      getData(api, temperatureDegree, temperatureDescription, locationTimezone);
     });
   } else {
     // We show a message if the geolocation Doesn’t Success
     h1.textContent =
       "Please check if your browser has permission to lactation or support of it";
   }
+};
+
+// Get data from API
+const getData = async (
+  api,
+  temperatureDegree,
+  temperatureDescription,
+  locationTimezone
+) => {
+  // We fetch and await the response
+  const response = await fetch(api);
+  // We wait the results in a JSON OBJ
+  const data = await response.json();
+  console.log(data);
+  // Short hand to get the data -> temperature & summary
+  const { temperature, summary } = data.currently;
+  // Set the DOM element
+  setDomElements(
+    data,
+    temperature,
+    summary,
+    temperatureDegree,
+    temperatureDescription,
+    locationTimezone
+  );
+};
+
+// Set DOM elements passing params of data and dom selectors
+const setDomElements = (
+  data,
+  temperature,
+  summary,
+  temperatureDegree,
+  temperatureDescription,
+  locationTimezone
+) => {
+  temperatureDegree.textContent = temperature;
+  temperatureDescription.textContent = summary;
+  locationTimezone.textContent = data.timezone;
 };
