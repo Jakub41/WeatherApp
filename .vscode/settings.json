@@ -1,0 +1,6 @@
+{
+    "jshint.options": {
+        "esversion": 8
+    },
+    "liveServer.settings.port": 5501,
+}
