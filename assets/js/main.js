@@ -22,8 +22,7 @@ window.onload = () => {
   let temperatureDegree = document.querySelector(".temp-degree");
   const temperatureSpan = document.querySelector(".change-degree");
   let temperatureDescription = document.querySelector(".temp-description");
-  // Spinner load
-  showLoader();
+
   // We check if geolocation exist on browser with a JS method
   // @link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
   if (navigator.geolocation) {
@@ -32,6 +31,8 @@ window.onload = () => {
       // Getting coordinates we accessed long/lat
       long = position.coords.longitude;
       lat = position.coords.latitude;
+      // Spinner load
+      showLoader();
       // CORS fix
       const proxy = `https://cors-anywhere.herokuapp.com/`;
       // API -> we pass as @params 1st lat 2sd long
