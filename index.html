@@ -17,18 +17,20 @@
 
 <body>
     <div class="container-fluid">
+         <!-- Spinner -->
+         <div id="loader"></div>
         <div class="row">
             <div class="col-12">
                 <!-- Location -->
                 <div class="location">
-                    <h1 class="t-zone"></h1>
-                    <p></p>
+                    <h1 class="location-zone"></h1>
+                    <canvas class="icon" width="128" height="128"></canvas>
                 </div>
                 <!-- Temperature -->
                 <div class="temperature">
                     <div class="degree-section">
                         <h2 class="temp-degree"></h2>
-                        <span></span>
+                        <span class="change-degree"></span>
                     </div>
                     <div class="temp-description"></div>
                 </div>
@@ -47,6 +49,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="./assets/js/skycons.js"></script>
     <script src="./assets/js/main.js"></script>
 </body>
 
