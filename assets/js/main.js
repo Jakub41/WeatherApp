@@ -22,13 +22,13 @@ window.onload = () => {
   let temperatureDegree = document.querySelector(".temp-degree");
   const temperatureSpan = document.querySelector(".change-degree");
   let temperatureDescription = document.querySelector(".temp-description");
+  // Spinner load
+  showLoader();
   // We check if geolocation exist on browser with a JS method
   // @link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
   if (navigator.geolocation) {
     // Getting current position
     navigator.geolocation.getCurrentPosition(position => {
-      // Spinner load
-      showLoader();
       // Getting coordinates we accessed long/lat
       long = position.coords.longitude;
       lat = position.coords.latitude;
@@ -162,7 +162,9 @@ const changeTemperatureDegree = (
 // Spinner
 const showLoader = () => {
   const spinner = document.querySelector("#loader");
+  const hideContent = document.querySelector(".hideContent");
   spinner.classList.add("show");
+  hideContent.classList.add("d-none");
   spinner.innerHTML = `
     <svg version="1.1" id="sun" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10" enable-background="new 0 0 10 10" xml:space="preserve" style="opacity: 1; margin-left: 0px; margin-top: 0px;">
     <g>
@@ -205,5 +207,6 @@ const showLoader = () => {
   `;
   setTimeout(() => {
     spinner.classList.remove("show");
+    hideContent.classList.remove("d-none");
   }, 5000);
 };
