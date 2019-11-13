@@ -6,6 +6,7 @@
  * @link https://darksky.net/forecast/40.7127,-74.0059/us12/en
  *
  * @param {float} latitude, longitude
+ * @param {float} temperature
  *
  * ! To be able to use it you need to allow location access
  * ! in your browser when asked
@@ -22,6 +23,8 @@ window.onload = () => {
   let temperatureDegree = document.querySelector(".temp-degree");
   const temperatureSpan = document.querySelector(".change-degree");
   let temperatureDescription = document.querySelector(".temp-description");
+  // Error message
+  let message = document.querySelector("h1");
 
   // We check if geolocation exist on browser with a JS method
   // @link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
@@ -52,7 +55,7 @@ window.onload = () => {
     });
   } else {
     // We show a message if the geolocation Doesn’t Success
-    h1.textContent =
+    message.textContent =
       "Please check if your browser has permission to lactation or support of it";
   }
 };
@@ -162,10 +165,15 @@ const changeTemperatureDegree = (
 
 // Spinner
 const showLoader = () => {
+  // Selecting the spinner section
   const spinner = document.querySelector("#loader");
+  // Content to hide
   const hideContent = document.querySelector(".hideContent");
+  // Spinner shows
   spinner.classList.add("show");
+  // Content hide
   hideContent.classList.add("d-none");
+  // Loader HTML
   spinner.innerHTML = `
     <svg version="1.1" id="sun" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10" enable-background="new 0 0 10 10" xml:space="preserve" style="opacity: 1; margin-left: 0px; margin-top: 0px;">
     <g>
@@ -206,6 +214,7 @@ const showLoader = () => {
         LOOKING OUTSIDE FOR YOU... ONE SEC
     </div>
   `;
+  // Loader timeout
   setTimeout(() => {
     spinner.classList.remove("show");
     hideContent.classList.remove("d-none");
